@@ -42,3 +42,14 @@ function findSteps(id) {
     .from("steps")
     .join("schemes", "steps.scheme_id", "=", "schemes.id");
 }
+
+function addStep(step, scheme_id) {
+  console.log(scheme_id, step, step.step_number);
+
+  return db("steps").insert({
+    scheme_id: scheme_id,
+    step_number: step.step_number,
+    instructions: step.instructions,
+    scheme_name: step.scheme_name
+  });
+}
